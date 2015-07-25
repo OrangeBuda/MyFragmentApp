@@ -20,5 +20,11 @@ public class Note {
         return content;
     }
 
-
+    @Override
+    public String toString() {
+        return "Note{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * Created by macmini14 on 7/25/15.
@@ -45,6 +46,22 @@ public class ListFragment extends Fragment {
     }
 
     private class NoteListViewAdapter extends ArrayAdapter<Note>{
-        
+
+        private final Fragment fragment;
+
+        public NoteListViewAdapter(final Fragment fragment) {
+            super(fragment.getActivity(), 0, notes);
+            this.fragment = fragment;
+
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            final View listElement = fragment.getActivity().getLayoutInflater().inflate(R.layout.fragment_list_listview_element, null);
+            final TextView titleTextView = (TextView) listElement.findViewById(R.id.fragmen_list_listview_element_title);
+            titleTextView.setText(getItem(position).getTitle());
+
+            return listElement;
+        }
     }
 }
